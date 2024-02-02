@@ -16,15 +16,10 @@ function ShoppingList({ items }) {
   clientSelection === "All"
     ? items
     : items.filter((item) => item.category === clientSelection);
-
-
-
-
-
   return (
     <div className="ShoppingList">
       <div className="Filter">
-        <select name="filter" onChange={handlingSelection}value={clientSelection}>
+        <select name="filter" onChange={handlingSelection}>
           <option value="All">Filter by category</option>
           <option value="Produce">Produce</option>
           <option value="Dairy">Dairy</option>
@@ -32,7 +27,7 @@ function ShoppingList({ items }) {
         </select>
       </div>
       <ul className="Items">
-        {items.map((item) => (
+        {filteredItems.map((item) => (
           <Item key={item.id} name={item.name} category={item.category} />
         ))}
       </ul>
